@@ -1,0 +1,181 @@
+GOOGLE CLOUD PLATFORM NOTES FOR DATA ENGINEERING and Machine Learning 
+
+1. UNDERSTANDING CLOUD 
+some history on cloud computing and computer 
+your laptop has CPU, RAM, HARD DISK, network interface card connecting to relevant internet service provider 
+Google cloud offers COMPUTE ENGINE. 
+can build self managed virtual machines in Google Cloud. 
+
+
+MANAGING RESOURCES IN GOOGLE CLOUUD 
+You can use Google cloud shell to manage all resources in google cloud platform 
+Tools provided to manage resources in the command line is 
+a. gsutil => GOOGLE CLOUD STORAGE SERVICES 
+b. bq => bigquery services 
+c. kubectl => kubernetes services 
+
+
+GCP NETWORKING 
+without networking, computer cannot connect to the outside world and you will not enjoy the things you enjoy now. 
+with GCP, a cloud network called VPC(VIRTUAL PRIVATE CLOUD) is used. 
+This is a software based logical network resource 
+within a GCP project a number of these VPCs can be provisioned 
+After launching VMs,  you can connect them within a VPC or isolate them from each other in seperate VPCs 
+VPCs are global, so can be provisioned anywhere in the world. 
+within a VPC is a public subnet which has VMs with external IP addresses that are accessible from the internet and can access the internet 
+private subnets contain VMs that do not have external IP Addresses. 
+VPCs can be peered with each other within a GCP project or outside a GCP project. 
+
+2. HOW TO CREATE FIRST GCP PROJECT 
+Each GCP project has a PROJECT NAME AND PROJECT ID. 
+This is a default project name and when you spin up your own GCP, you will see a different default project name 
+You can then make your customised project. 
+PROJECT NAME => My First Project
+PROJECT ID => calm-athlete-375514
+3. USING THE CLOUD SHELL
+The cloud shell is like the terminal you use on your favorite coding editor 
+You can open editor in Google cloud, create a program and run it in google cloud platform. 
+
+4. VM BASED VS MANAGED SERVICES VS SERVERLESS SERVICES 
+Before we delive into this. The goal is to use products that are configured and maintained by service provider(GOOGLE). 
+There are three approaches to using managed services in google cloud platform 
+1. VM BASED 2. MANAGED SERVICES 3. SERVERLESS(FULLY MANAGED SERVICES) 
+VM BASES => VIRTUAL MACHINE which is compute engine. You need to install software yourself. 
+This is a viable option because not all softwares are install in Google Cloud Platform. 
+
+2. Managed Services: This means google manages the software for you. No need to install an OS. 
+A typical example is if i wanted to use hadoop in gcp. i need to spin up a VM 
+Install Hadoop and then use it. 
+The hadoop alternative which is a managed service is Dataproc. No installations needed and google manages everything 
+for you. But as a user, you might still need to configure the machine size, networks etc 
+
+3. SERVERLESS: Means simply use it. ie Bigquery. You do not need to set up anything 
+so in conclusion the main differences between these are 
+VM BASED You manage virtual machines, applications and develop whatever service you want. 
+MANAGED SERVICE, You manage applications and develop the service you want. 
+FULLY MANAGED SERVICE, you just develop the service you want. 
+
+SCENARIOS 
+AS A DATA ENGINEER, i want to process and store csv data 
+
+solution 1: 
+a. provision multiple vm instances in gcp using compute engine 
+configure the vm networks, os, packages and any infrastructures necessary. 
+b. install hadoop cluster on top of the compute engine instances. 
+choose any hadoop version you like 
+c. store data in HDFS and create a hive table on top of the cluster 
+
+solution 2: 
+a. spin up and enable dataproc 
+b. store data in hdfs and create a hive table on top of the hadoop cluster 
+
+solution 3: 
+a. store the data in bigquery which is a fully managed service for data warehouse. 
+
+
+
+5. GOOGLE CLOUD ANALYTICS TOOLS 
+We will be focusing on analytics and machine learning tools. 
+Google Cloud Big data ana analytics services are 
+a. Cloud Dataproc 
+This is built on the concept of Map-Reduce and Hadoop systems architecture. 
+This is a managed GCP service for processing large datasets. 
+Organisations can provision clusters of varying sizes. 
+It can be used to process, transform and understand large quantities of data. 
+It can be used to run apache spark, flink, presto etc 
+It can also be used for data lake mordinzation, etl processes and etc 
+b. Cloud dataflow 
+This is also a managed service for developing and executing a wide variety of data processing tasks ie ETL batch and streaming jobs. 
+This is a serverless service that runs jobs written in apache beam. There is a sequence of steps for reading, transforming and writing out data. 
+Pipeline consists of a series of steps, which is a way to connect compoenents to next step. 
+When jobs are executed, dataflow spins up a cluster of VMs, distributes the job tasks to the VMs and scales the cluster based on the job loads and performance. 
+c. BigQuery 
+This an enterprise datawarehouse service which is scalable, fast and optimised for data analytics. 
+1. it supports standard sql queries. 
+2. It is serverless. 
+3. It integrates well with other GCP services. 
+4. Manage and analyse your data with built in ML, geo spatial analysis and BI. 
+d. Cloud Pub/sub 
+This implements an event/message queue pipe to integrate services and parallelise tasks. 
+With pub/sub service, you can create event producers(publishers) and consumers called subscribers. 
+ie After an object is uploaded into Google cloud storage bucket, 
+a request can be generated and sent to PUB/SUB which can trigger an email notification and cloud function to process the object. 
+e. Datastream 
+This is a serverless data replication service. This allows to easily replicate data from relational databases ie oracle into bigquery directly. 
+It supports streaming changes from oracle, mysql, postgressql databases into cloud storage. 
+It also offers streamlined integration by using dataflow templates to build custom workflows to replicate databases into cloud sql or cloud spanner for database synchronisation. 
+f. Dataplex 
+There are datawarehouses, datalakes and data marts. 
+This is a unified data management tool to automate data management. 
+enables organisations to centrally discover, manage, monitor and govern data accross data lakes, data warehouses and data marts. 
+
+g. Looker 
+Business intelligence tool for data analytics. Helps explore, share and visualise organisations data to make better business decisions. 
+You can use looker to build dashboards for your business. 
+i. Dataprep 
+This is a data preprocessing tool for exploring, cleaning and preparing structured or unstructured data for analysis, reporting and machine learning. 
+j. Data fusion 
+This is a fully managed visual click interface for creating and deploying ETL/ELT data pipelines. 
+This is an alternative no code data integeration service. 
+You can move data from onpremise to cloud using this tool. 
+k. Cloud Composer 
+This is a fully managed workflow orchestration service, enabling to create,schedule and manage workflows that span accross cloud and on premise data. 
+This is built on popular apache airflow and will be investigated in depth and operates using python programming language. 
+
+
+
+COMPUTE SERVICES IN GOOGLE CLOUD PLATFORM 
+The whole GCP compute tools are 
+1. Google Compute Engine 
+Images provide the base operating environment for apps that run in compute engine(VMs) 
+GCE offers different pricing models. ie Pay as you model, committed usage, premptive and sole tenant host. 
+Pay as you go is for businesses that need provision on the fly 
+if workload is foreseeable, then we use committed usage
+if the workload can be restarted then we want to leverage the premptive model 
+
+
+Load Balances and Managed Instanced Groups 
+
+2. Google Cloud Kubernetes Engine 
+3. Cloud Run 
+4. Google App Engine 
+5. Cloud Functions 
+
+
+
+
+
+
+
+
+
+7. STORAGE IN GOOGLE CLOUD 
+The whole storage resources in Google cloud are 
+1. Cloud Storage 
+2. File store 
+3. Appliances 
+4. Data Transfer 
+
+
+8. DATABASES IN GOOGLE CLOUD PLATFORM 
+1. Bigtable 
+2. Datastore 
+3. CLOUD SQL 
+4. CLOUD BIGTABLE 
+5. CLOUD SPANNER 
+6. CLOUD FIRESTORE 
+
+
+
+
+8. AI SERVICE IN GOOGLE CLOUD PLATFORM 
+1. VERTEX AI 
+2. AI PLATFORM 
+3. DOCUMENT AI  
+
+
+
+6. USER ACCOUNT VS SERVICE ACCOUNTS 
+
+
+15. BILLINGS AND HOW TO BE EFFICIENT IN GOOGLE CLOUD PLATFORMS X
