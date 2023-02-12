@@ -1,0 +1,121 @@
+Data Modelling Essentials 
+Relationships & Data Modelling 
+
+3 levels of data models 
+1. physical model specifies how a data will be built in the database. 
+This shows all table structures including column name, data type, primary key, foreign keys 
+and relationships between tables. 
+2. conceptual model defines what the system contains. This model is created by business stakeholders 
+and data architects. Purpose is to organise, scope and define the business concepts and rules. 
+3. logical model, defines how a system has to be implemented regardless of the database 
+management system being used. 
+
+
+
+
+Data models describe entities and relationships. 
+Data models are objects or concepts we want to track. 
+
+ie Products, Vendors & Customers in the data model. 
+Entities have their own attributes, details what we want to track about. 
+
+Products => Product ID, Vendor ID, Product Name, UPC, Size, Color. 
+Vendors => Vendor ID, Vendor Name 
+Customers => Customer ID, First Name, Last Name, Phone Number, Email 
+
+Entities exist by connecting each other which is relationships. 
+Relationships => one to one relationships, one to many relationships, many to many relationships 
+
+One to Many Relationships 
+ie Single Vendor makes multiple products 
+ie Microsoft makes Word, Excel, teams etc 
+
+One to One Relationships 
+ie Country -> Capital town 
+
+Many to Many relationships 
+Multiple records of a table is associated with multiple records of another table 
+Books <-> Authors 
+Table is usually broken down into 
+Books Table pk -> BookID, ISBN, GENRE 
+AUTHORS -> FIRSTNAME, LASTNAME, 
+AUTHORBOOK -> BOOKID, AUTHORID 
+
+
+DATAWAREHOUSING 
+
+INMON METHODOLOGY 
+SOURCES -> DATA CLEANING -> DATAWAREHOUSE(NORMALISED) -> DATAMARTS(FINANCE, SALES, HR) -> REPORTING 
+NORMALISATION 
+THIS IS BREAKDOWN OF A LARGE INTO SUB TABLES WITH PRIMARY KEY CONNECTING THEM 
+
+FORMS OF NORMALISATION 
+FIRST NORMAL FORM 
+SECOND NORMAL FORM 
+THIRD NORMAL FORM ETC 
+
+COMPOSITE KEY ?? PRIMARY KEY COMPOSED OF MULTIPLE COLUMNS USED TO IDENTIFY RECORDS. 
+IE TWO SAME TENANT NAMES BUT DIFFERENT ADDRESSES 
+
+
+KIMBALL METHODS 
+DATA SOURCES -> DATA WAREHOUSING(DENORMLAISED) -> REPORTING 
+USING THE STAR SCHEMA SYSTEM OF FACTS AND DIMENSIONS 
+
+MOST DATAWAREHOUSES USES A MIXTURE OF KIMBAL & INMON METHODOLOGY. 
+
+
+DATA VAULT 
+ADDRESSES ISSUES IN KIMBALL AND INMON METHODOLOGY. 
+
+GOAL ?? 
+GET UP AND RUNNING QUICKLY 
+ADAPTABILITY TO CHANGE 
+BUSINESS CALCULATION IS PUSHED DOWN THE PROCESS 
+
+SOURCE -> DATALAKE -> STAGING LAYER -> RAW VAULT(BUSINESS CALCULATION) -> REPORTING 
+STAGING LAYER -> HOLD & PREP SOURCE DATA FOR BATCH AND STREAMING PROCESS 
+INSIDE THE RAW VAULT, WE HAVE BUSINESS VALUTS INSIDE. 
+KEY MODELLING HAPPENS IN THE RAW VAULT 
+
+BUSINESS KEYS -> THEY ONLY CHANGE WHEN BUSINESS CHANGES. 
+KEYS ARE SEPERATED FROM ATTRIBUTE DATA IN KEY TABLES CALLED HUBS. 
+
+HUBS -> CONTAINS A LIST OF BUSINESS KEYS UNLIKELY TO CHANGE. 
+HUBS ARE CONNECTED THROUGH LINK TABLES 
+HUB -> LINK -> HUB 
+LINKS -> CONTAINS ASSOCIATIONS OR TRANSACTIONS BETWEEN HUBS. 
+
+HUBS AND LINKS CREATE MODEL OF HOW ALL OF THE DATA IS CONNECTED 
+THEY CONTAIN NO DESCRIPTIVE ATTRIBUTES 
+
+DESCRIPTIVE ATTRIBUTES RE STORED IN SATELLITES. 
+
+IE 
+CUSTOMER NAME, CUSTOMER NUMBER, CUSYOMER ADDRESS, CUSTOMER PHONE, ORDER NUMBER, ORDER DATE, ORDER AMOUNT, CURRENCY CODE. 
+
+ATTRIBUTES GO INTO HUBS 
+CORE BUSINESS ENTITIES 
+HUB 1 => CUSTOMER NUMBER + ADDITIONAL METADATA 
+HUB 2 => ORDER NUMBER + ADDITIONAL META DATA 
+NUB 1 AND HUB 2 ARE CONNECTED LINK TABLES 
+HOLD RELATIONSHIP BETWEEN HUBS 
+CUSTOMER ORDER LINK => CUSTOMER NUMBER, ORDER NUMBER, ADDITIONAL METADATA 
+
+
+SATELLITES 
+ATTRIBUTES & OF EACH HUB IS PUT INTO SATELLITES 
+SATELLITE 1 => ORDER DATE, ORDER AMOUNT , METADATA 
+SATELLITE 2 => CUSTOMER NAME, CUSTOMER PHONE, CUSTOMER ADDRESS, ADDITIONAL METADATA 
+
+LOOKUP TABLE 
+CURRENCY CODE 
+CURRENCY DESCRIPTION 
+
+IE PIMMS HUB, IMPACT HUB ETC 
+USE LINK TO RESOLVE DEPENDENCIES 
+
+STAR SCHEMA BUILT ON TOP OF THE DATA VALUT 
+
+
+

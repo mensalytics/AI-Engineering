@@ -1,2 +1,2 @@
-This part is for Machine Learning for investigating frameworks used for machine learning 
-Tensorflow and Pytorch 
+This part is for Machine Learning for investigating frameworks used for machine learning. 
+Tensorflow and Pytorch. 

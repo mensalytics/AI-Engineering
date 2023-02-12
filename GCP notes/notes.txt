@@ -135,12 +135,135 @@ if the workload can be restarted then we want to leverage the premptive model
 
 
 Load Balances and Managed Instanced Groups 
+Single Computer may be down due to hardware and software failures. 
+It does not provide any scaling when computing demands are changed along the timeline. 
+GCP provides load balancers and managed instance groups. 
+This allows to us to create homogenous groups of instances so that load balancers can direct traffic 
+to more than one VM instance. 
+MIG offers auto scaling and auto healing. 
+This lets you deal with spikes in traffic by configuring appriopriate minimum and maximum 
+instances in the autoscaling policy and scaling the number of VM instances up and down based on specific signals 
+whilst auto healing performs health checks and if necessary recreate unhealthy instances. 
+
 
 2. Google Cloud Kubernetes Engine 
-3. Cloud Run 
-4. Google App Engine 
-5. Cloud Functions 
+Instead of launching a VM to run an application, we package the app 
+into a standard unit that contains everything to run the app or service. 
+Build the package into a docker image. 
+A container is a running instance of a docker image. 
+Docker image virtualises an operating system into app containers. 
+As more and more apps are containerised. 
+A container management system is necessary where GKE cluster consists of one 
+control pane with multiple worker machines called nodes, who work 
+together to manage/orchestrate the containers. 
+Kubernetes pod is a group of containers that are deployed together and work 
+together to complete a task 
+ie app server pod containers three seperate containers; 
+the app server itself, monitoring containers and a logging containers. 
 
+3. Cloud Run 
+Managed compute platform that enables you to run stateless containers that can be 
+invoked via HTTP requests. Cloud run is serverless. 
+Can build your applications in any language using whatever frameworks and tools. 
+Deploy them in seconds without having to manage the server infrastructure. 
+
+
+4. Google App Engine 
+Platform as a service 
+used for web app backends, mobile app backends. 
+When an app needs to communicate with services or APIs 
+Use this as a solution. 
+This is a fully managed service and you can build your app in popular programming 
+languages ie Java, Python & Golang.  
+
+
+5. Cloud Functions 
+Serverless compute service that allows you submit your code written in 
+languages. Google will run the code in the backend and deliver results to you. 
+Do not know and do not care where the code was run. Only charged for the time 
+your code runs on GCP. 
+Leveraging cloud functions, piece of code can triggered within a few milliseconds 
+based on certain events. 
+ie after an object is uploaded to GCS bucket. 
+message can be generated and sent to GCP PUB/SUB 
+which will cause cloud functions to process the object. 
+It can be triggered based on HTTP endpoints you define or by events in 
+Firebase mobile apps. 
+
+Differences between Google App Engine, Cloud Functions & Cloud Run. 
+App engine supports many different devices within a single app. 
+Cloud run supports individualised services. 
+if requirements dont include multiple services then cloud functions is good choice. 
+ie saving or extracting data from a database, doing some validatimg 
+then use cloud functions.
+App Engine, data is shared among instances. But a function is invoked with 
+cloud functions, its on its own so you need to keep track of data when 
+using cloud functions, you will need to use a database. 
+Cloud functions are for lightweight, standaline pieces of functionality.
+App engine is suited for apps with numerous pieces of functionality in 
+interelated or unrelated ways. 
+
+ie cloud functions 
+Main uses 
+1. Data Processing/ETL => Listen and respond to cloud storage events. 
+2. Mobile backends => compose apps from lightweight loosely coupled bits of logic. 
+Cloud Functions supports a single request at a time for each cloud function 
+instance. 
+Cloud run is able to handle multiple requests at the same time and is able to 
+scale up based on demand. 
+
+App Engine 
+Highly scalable apps 
+use cases 
+Web Apps 
+Scalable Mobile backends => seamless integration with firebase provides easy to use 
+front end mobile platform along with scalable and reliable backend. 
+
+Cloud run can scale stateless containers and leverage google kubernetes engine. 
+If you need a serverless option that needs an app to run in a stateless 
+container. 
+Deploy a service in a single containerise app 
+Google handles server management and scalability. 
+It comes into play when further customisation is required ie 
+embedding AI models or serving multiple interfaces for a longer period of time. 
+
+
+
+
+
+
+WHAT IS VM BASED, SERVERLESS,MANAGED & FULLY MANAGED(SERVERLESS) IN GOOGLE CLOUD PLATFORM ?? 
+These are the three groups of services in google cloud platform. 
+Managed service is a term for products & services that is managed and configured 
+and maintained by the service provider. 
+If you want to use an IT product, you simply use it. Google manages the software 
+for you. You do not install any operating system and no software dependencies or 
+carry out maintenance. 
+A VM based approach is to use Google managed virtual machines which is called 
+Compute Engine. No need to buy own machine and install the OS but you will need to 
+install the software yourself. This is a viable option because not all services that 
+will fit your business or project are available in Google Cloud Platform. 
+A serverless service means simply use it. You just use the software instantly. You do not need to 
+set up anything to use the software.
+
+VM BASED APPROACH 
+You do not manage physical infrastructure 
+You will manage virtual machines 
+You will manage the application service 
+You will develop the solution on top of the service 
+
+
+MANAGED SERVICE 
+You do not manage physical infrastructure 
+You do not need to manage virtual machines 
+You will manage the application service 
+You will develop the solution on top of the service 
+
+FULLY MANAGED SERVICE OR SERVERLESS 
+You do not manage physical infrastructure 
+You do not need to manage virtual machines 
+You do not need to manage the application service 
+You will develop the solution on top of the service 
 
 
 
@@ -152,30 +275,103 @@ Load Balances and Managed Instanced Groups
 7. STORAGE IN GOOGLE CLOUD 
 The whole storage resources in Google cloud are 
 1. Cloud Storage 
-2. File store 
+Store any amounts of data and retrieve it as often as you like 
+ie Images, web asset libraries & as data lakes 
+Also used as backups, media archives, long tail content, regulation and compliance requirements 
+Block Storage 
+2. Persistent Disks 
+Block Storage service which is fully integrated with Google Cloud products like Compute Engine and GKE 
+IE Disks for virtual machines, share read only data accross multiple VMs 
+Rapid and reliable backups of running virtual machines 
+storage for databases 
+
+Local SSD => flash optimised databases, hot caching layer for analytics, application scratch disks 
+
+2. File store for file storage 
+fully managed service for file migration and storage. Easily mount files shares on compute engine VMs 
+for Data analytics, rendering and media processing, application migrations and web content management 
 3. Appliances 
+Server to collect and physically move data from field locations with limited connectivity or from data services 
+for transfer data for archival, migrations or analytics 
+capture sensor data for ml or analysis 
+move data from bandwidth - constrained locations 
 4. Data Transfer 
+tools to help perform data transfer from on prem or other cloud provider. 
+collecting research data, moving ML training datasets or migrating S3 to Google Cloud 
+
+5. Backup and disaster recovery 
+6. Mobile app services 
+Cloud storage for firebase 
+for user generated content 
+uploads over mobile netrowkrs 
 
 
-8. DATABASES IN GOOGLE CLOUD PLATFORM 
+
+
+
+8. STORAGE(STRUCTURED) IN GOOGLE CLOUD PLATFORM 
 1. Bigtable 
+Heavy read + write events 
+ie personalisation, adtech, recommendation engines, fraud detection 
 2. Datastore 
+Datastore is a highly scalable NOSQL DATABASES for your applications 
+Datastore automatically handles sharding and replication, providing you with a highly
+available and durable datasets that scales automatically to handle your app load. 
 3. CLOUD SQL 
-4. CLOUD BIGTABLE 
+general purpose SQL DB 
+web frameworks, erp, crm, ecommerce and web & saas applications 
 5. CLOUD SPANNER 
+RDMS 
+ie gaming, global financial ledger & supply chain inventory management 
 6. CLOUD FIRESTORE 
+large scale complex hierachical data 
+ie mobile/web/iot applications, real time sync, offline sync, personalised apps 
 
 
+The relational databases are Cloud sql, cloud spanner and bare metal 
+Non relational databases are firestore and cloud bigtable 
+What are non relational databases? 
+Non-relational databases can store a variety of unstructured data such as documents, key-value, graphs, wide columns, and more.
+In memory is memorystore. 
+
+Qualities that make NOSQL databases fast ? 
+Typically, they are optimized for a specific workload pattern (i.e., key-value, graph, wide-column)
+Horizontal scaling, usually using range or hashed distributions
+Eventual consistency: many NoSQL stores usually exhibit consistency at some later point (e.g., lazily at read time). 
+However, Firestore uniquely offers strong global consistency.
+Transactions:  a majority of NoSQL stores don't support cross shard transactions or flexible isolation modes. 
+However, Firestore uniquely offers ACID transactions across shards with serializable isolation.
+
+RELATIONAL VS NON RELATIONAL DATABASES ?? 
+Relational database by linking information from multiple tables through the use of keys. 
+A key is a unique identifier which can be assigned to a row of data contained within a table. 
+
+
+
+
+9.UNSTRUCTURED IN GOOGLE CLOUD PLATFORM 
+CLOUD STORAGE 
+BLOCK STORAGE / PERSISTENT DISKS 
+FILESTORE 
 
 
 8. AI SERVICE IN GOOGLE CLOUD PLATFORM 
 1. VERTEX AI 
-2. AI PLATFORM 
+Build, deploy, and scale machine learning (ML) models 
+faster, with fully managed ML tools for any use case. 
+
 3. DOCUMENT AI  
 
 
 
 6. USER ACCOUNT VS SERVICE ACCOUNTS 
+User account is your personal account as a human user. 
+Service account is an account that will be used by non humans. 
+Non humans, ie to automate solutions in order to do that 
+machines should do tasks 
+ie triggering jobs, docker images, running python scripts etc 
+Using cloud composer to orchestrate ETL load from Google cloud storage to bigquery 
+
 
 
 15. BILLINGS AND HOW TO BE EFFICIENT IN GOOGLE CLOUD PLATFORMS X
