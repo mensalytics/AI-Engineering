@@ -56,3 +56,30 @@ TOOLS TO USE
 3. INITIALISE OUR CREDENTIALS USING gcloud init 
 4. DOWNLOAD example code and dataset from github 
 4.1 - write the code, upload to github and pull code from github to bigquery console explorer 
+
+gcloud init command 
+- 2. create a new configuation = eng-config 
+- 3. choose default email signed in 
+- 4. choose projectid 
+
+
+TASK 2 - UPLOAD DATA TO GCS VIA GIT 
+- CREATE A GCS BUCKET 
+- Name it: eng-data-bucket 
+- choose multi region as the location 
+- data will be stored in standard storage = best for short term storage and frequently assessed data 
+- other options 
+Nearline => best for backups and data accessed less than once a month 
+Coldline => best for disaster recovery and data accessed less than once a month 
+Archive => Best for long term digital preservation of data accessed less than once a month 
+- Access to objects : prevent internet from accessing it 
+choose uniform 
+Ensure uniform access to all objects in the bucket by using only bucket-level permissions (IAM). 
+This option becomes permanent after 90 days
+- Data Protection: choose how to protect the data to prevent data loss 
+option 1: None 
+option 2: Object versioning(best for data recovery)
+option 3: Retention policy(best for compliance) 
+
+- TASK 3: UPLOADING THE LOCAL FILE TO GOOGLE CLOUD STORAGE BUCKET 
+
