@@ -1,1 +1,1 @@
-gsutil cp DataEngineering/EngBook/dataset/* gs://eng-data-bucket
+gsutil cp -r DataEngineering/EngBook/dataset/* gs://eng-data-bucket
