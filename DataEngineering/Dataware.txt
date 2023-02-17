@@ -82,4 +82,33 @@ option 2: Object versioning(best for data recovery)
 option 3: Retention policy(best for compliance) 
 
 - TASK 3: UPLOADING THE LOCAL FILE TO GOOGLE CLOUD STORAGE BUCKET 
+gsutil cp -r DataEngineering/EngBook/dataset/* gs://eng-data-bucket
 
+- TASK 4: PRACTICING DEVELOPING A DATAWAREHOUSE 
+SCENARIOS 
+1. As a regional manager user, I want to know the top two region IDs, 
+ordered by the total capacity of the stations in that region.
+
+2. As a regional manager, I want to download the answers 
+to my questions as CSV files to my local computer.
+
+3. The data source table is the station table, which is located in the CloudSQL-MySQL database.
+
+4. There will be more data sources in the future besides the station table.
+
+THINKING !!!!!
+1. WHAT WILL YOU DO ?? 
+2. WHAT SERVICES WILL YOU USE ?? 
+3. HOW WILL YOU DO IT ? 
+
+SCENARIO 1 
+1. Since there is a very specific business rule, we need some transformation. The rule
+seems doable in SQL, and BigQuery is a good system for handling such jobs.
+
+2. The BigQuery table can easily be downloaded into CSV files from the console. 
+So, storing the results as a BigQuery table or view will be great.
+Now the source data is in mysql database and may potentially come from another database in
+the future. 
+
+Planning 
+- 
