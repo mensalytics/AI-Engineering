@@ -179,6 +179,55 @@ This allows service account to load data into GCS bucket
 Now to load the data, access cloud shell ahain and trigger gcloud command to export 
 MYSQL query results to a csv file using shell script 
 
+Now the script used is gcloudexportcloudsqltogcs.sh to breakdown the data 
+export parts into different folders in gcs 
+navigate to file and run the file 
+sh filename.sh 
+then finally delete mysql instances 
+gcloud sql instances delete mysql-instance-source 
+
+
+TASK 3: LOADING GCS TO BIGQUERY 
+Bigquery console 
+- create a new dataset named raw_bikesharing 
+- click on table icon 
+- create table from, choose gcs 
+- browse and choose 20180101/stations.csv 
+- for the table name select stations 
+- schema - edit as text 
+add to schema box  
+station_id:STRING, name:STRING, region_id:STRING, capacity:INTEGER 
+- create the table 
+- check if data has been loaded into the table 
+
+
+TASK 4: CREATE A BIGQUERY DATA MART 
+DATA MARTS MOSTLY WHAT COMPANIES USE 
+TO CREATE A DATAMART TWO WATS 
+- CREATE A TABLE 
+- CREATE A VIEW 
+BOTH HAVE THEIR ADVANTAGES AND DISADVANTAGES 
+VIEWS 
+COSTS NO ADDITIONAL STORAGE 
+DATA IS NOT STORAGE ANYWHERE BUT SAVED IN SQL FORMULA 
+VIEW PULLS LATEST DATA CHANGES 
+
+DEMERITS 
+VIEWS CAN BE HEAVY AND WHEN MANY JOINS AND AGGREGATIONS IN THE VIEWS 
+QUERY MAY END UP HAVING VERY HEAVY PROCESSING 
+
+FOR INSTANCE IMAGINE HAVING 5 RAW TABLES WITH 1 PB EACH 
+1000 VIEWS ACCESSING THE 5 TABLES 
+END UP PROCESSING THAT HEAVY DATA REPEATEDLY AND THATS BAD FOR 
+COST AND PERFORMANCE. 
+
+BUT IN THIS EXAMPLE ITS SMALL SO LETS USE VIEW 
+CREATE THE VIEW BASED ON THIS SCRIPT in the codebase 
+
+
+DATAWAREHOUSE IN BIGQUERY - REQUIREMENTS FOR SCENARIO 2 
+
+
 
 
 
