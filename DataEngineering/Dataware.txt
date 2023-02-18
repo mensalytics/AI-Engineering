@@ -67,7 +67,7 @@ TASK 2 - UPLOAD DATA TO GCS VIA GIT
 - CREATE A GCS BUCKET 
 - Name it: eng-data-bucket 
 - choose multi region as the location 
-- data will be stored in standard storage = best for short term storage and frequently assessed data 
+- data will be stored in STANDARD STORAGE = best for short term storage and frequently assessed data 
 - other options 
 Nearline => best for backups and data accessed less than once a month 
 Coldline => best for disaster recovery and data accessed less than once a month 
@@ -111,4 +111,32 @@ Now the source data is in mysql database and may potentially come from another d
 the future. 
 
 Planning 
-- 
+- Specific business rules so will need to do some transformations 
+this can be done in SQL and bigquery is a good system for handling jobs like that 
+- Bigquery table can be easily be downloaded into CSV file from the console 
+so it makes sense to store the data in bigquery 
+
+Planning 2 
+Data is in CloudSQL - MYSQL database so we need to find a way to extract it from the database and 
+load it into bigquery. 
+Different options 
+a. for standardisation and scalability 
+we will use GCS as staging layer from mysql. 
+This extraction method applies to any data source 
+FINAL 
+CREATE MYSQL DATABASE -> EXTRACT MYSQL TO GCS -> LOAD GCS TO BIGQUERY -> CREATE BIGQUERY DATAMART 
+
+STEP 1: LETS CREATE A MYSQL DATABASE 
+A. CREATE A CLOUD INSTANCE 
+TWO WAYS TO CREATE A CLOUD SQL INSTANCE 
+1. EITHER USING THE UI OR USING THE CLOUD SHELL 
+WE WILL THE CLOUD SHELL FOR THIS 
+
+B. CONNECT TO THE MYSQL INSTANCE 
+C. CREATE A MYSQL DATABASE 
+D. CREATE A TABLE IN MYSQL DATABASE 
+E. IMPORT CSV DATA INTO MYSQL DATABASE 
+
+
+
+
