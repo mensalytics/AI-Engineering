@@ -1,0 +1,130 @@
+Typical ML process starts with defining business requirements 
+
+1. Clearly define the business outcome that your ML solution is supposed to achieve, 
+among all the stakeholders. For example, for a prediction ML problem, 
+we need to define a range of accuracy that is acceptable by the business 
+and agreed upon by all the stakeholders.
+
+2. Clearly define the data source of the ML problem. All ML projects are based on loads of data.
+
+3. Clearly define the frequency of ML model updating (since data distributions drift over time), 
+and the strategies for maintaining production during the model updating times.
+
+4. Clearly define the financial indications of the ML product or project. 
+Understand any limitations such as resource availability and budget planning, and so on.
+
+5. Clearly define the rules, policies and regulations for the problem. 
+
+for ie
+Zillow buying and selling properties in the USA. 
+predicting house prices is very critical 
+using large amount of historical data for US houses. 
+
+DEFINE ML PROBLEMS 
+IE HOUSE PRICES ARE TARGET 
+FEATURES ARE HOUSE ATTRIBUTES THAT AFFECT THE HOUSE PRICES IE LOCATION, HOUSE SIZE, 
+AGE OF HOUSE, NUMBER OF BEDROOMS AND BATHROOMS etc 
+
+
+ML PROBLEM CATREGORIES 
+REGRESSION => PREDICT CONTINOUS VALUE 
+CLASSIFICATION => PREDICT DISCRETE VALUES(TWO OR MORE) 
+BINARY CLASSIFICATION => PREDICT YES OR NO 
+MULTICLASS CLASSIFICATION => TWO OR MORE OUTPUTS 
+
+SUPERVISED LEARNING PROBLEMS => DATA IS LABELLED 
+UNSUPERVISED LEARNING PROBLEMS => DATA IS NOT LABELLED 
+REINFORCEMENT LEARNING => SET UP A MODEL(AGENT) AND A REWARD FUNCTION TO REWARD A
+AGENT WHEN IT PERFORMS TASKS SUCCESSFULLY AND PUNISH WHEN IT FAILS 
+
+SUPERVISED LEARNING => REGRESSION AND CLASSIFICATION PROBLEMS 
+UNSUPERVISED LEARNING => CLUSTERING OR GROUPING 
+
+
+DATA SAMPLING & BALANCING 
+DATA SAMPLING IS A STATISTICAL ANALYSIS TECHNIQUE USED TO SELECT, MANIPULATE AND ANALYSE 
+REPRESENTATIVE SUBSET IN A LARGER DATASET. 
+When sampling data, you need to be very careful not to introduce biased factors. 
+A classification dataset has more than two dataset classes. We call the classes that make up a 
+large proportion of the set majority classes, and those that make up a small 
+proposition minority classes.
+When the dataset has skewed class proportions – meaning the proportion of the minority classes 
+is significantly less than that of the majority classes, it is an imbalanced dataset, 
+and we need to balance it using statistical techniques called downsampling and upweighting. 
+Let’s consider a fraud detection dataset with 1 positive and 200 negatives. The model 
+training process will not reflect the real problem since the positive proportion is so small.
+In this case, we will need to process the dataset in two steps
+
+1. DOWNSAMPLING => Extract data examples from the dominant class to balance the classes. With a factor of 50 downsampling, the proportion will be 40:1 after downsampling.
+2. UPWEIGHTING => Increase the dominant class weight by the same factor of 50 (the same as the downsampling factor) during ML model training.
+Some ML libraries have provided built-in features to facilitate the process.
+
+NUMERICAL VALUE TRANSFORMATION 
+For a dataset that has numeric features covering distinctly different ranges (for example, 
+the age feature in a mortgage application approval ML model), 
+it is strongly recommended to normalize the dataset since it will help algorithms such as 
+gradient descent to converge.
+
+1. SCALING TO A RANGE 
+normalization is converting floating-point feature values from their natural range 
+(for example, the age range of 0-90 ) into a standard range (for example, 0 to 1, or -1 to +1).
+2. CLIPPING 
+caps all feature values above (or below) a certain value to a fixed value. If your dataset contains 
+extreme outliers, feature clipping may be a good practice. For example, you could clip all 
+temperature values above 80 to be exactly 80. Feature clipping can be applied before or 
+after other normalizations.
+3. LOG SCALING 
+computes the log of your feature values, thus compressing a wide data range to a narrow range. 
+When a handful of the data values have many points and most of the other values have few points, 
+log scaling becomes a good transformation method. 
+4. BUCKETING/BINNING 
+is also called binning. It transforms numeric features into categorical features, 
+using a set of thresholds. A good example is transforming house prices into 
+low, medium, and high categories, for better modeling.
+
+
+CATEGORICAL VALUE TRANSFORMATION IE USING ONE HOT ENCODING 
+
+MISSING VALUE HANDLING IE IMPUTATIONS 
+
+
+OUTLIER PROCESSING 
+we also see outliers – data points that lie at an abnormal distance from other values in the dataset. 
+Outliers can make it harder for models to predict accurately because they skew values away 
+from the other more normal values that are related to that feature.
+
+1. Deleting the outlier or imputing the outlier: If your outlier is based on an artificial error, 
+such as incorrectly entered data
+2. Transforming the outlier: Taking the natural log of a value to reduce the 
+outlier’s influence on the overall dataset
+
+
+FEATURE ENGINEERING 
+is the process of selecting and transforming the most relevant features in ML modeling. 
+It is one of the most important steps in the ML learning process. 
+Feature engineering includes feature selection and feature synthesis (transformation).
+
+
+FEATURE SELECTION 
+For an ML problem that has a lot of features extracted during the initial phase, 
+feature selection is used to reduce the number of those features (input variables), 
+so that we can focus on the features that are most useful to a model to predict the target variable.
+After you extract features for the problem, you need to use feature selection methods 
+to choose the most appropriate features for model training.
+
+IE 
+1. Filter methods use statistical techniques to evaluate and score 
+the relationship between each input variable and the target variable. 
+The scores are used to compare the features and decide the input variables 
+that will be used in the model.
+
+2. Wrapper methods create many models with different subsets of input features and 
+perform model training and compare their performances. 
+The feature subsets fitting the best-performing model according to a 
+performance metric will be selected. Wrapper methods need ML training on different subsets.
+
+FEATURE SYNTHESIS 
+A synthetic feature is created algorithmically, usually with a combination of the real features 
+using arithmetic operations such as addition, subtraction, multiplication, and division 
+to train machine learning models. Feature synthesis provides great insights into data patterns 
+and helps model training for some ML problems.

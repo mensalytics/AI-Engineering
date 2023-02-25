@@ -294,7 +294,9 @@ STEP 1
 - CREATE THE DATASETS USING PYTHON 
 Create a new dataset called dwh_bikesharing & 
 raw_bikesharing & dm_bikesharing to the list. 
+use file 
+createdatasets.py or createdatasetsone.py 
 
-
-
-
+STEP 2 INITIAL LOADING OF THE TRIPS TABLE INTO BIGQUERY 
+The dataset is in GCS bucket inside directory dataset/trips 
+use file loadtripsdatabigquery.py or loadtripsdatabigqueryone.py 
