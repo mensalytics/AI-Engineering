@@ -226,7 +226,74 @@ CREATE THE VIEW BASED ON THIS SCRIPT in the codebase
 
 
 DATAWAREHOUSE IN BIGQUERY - REQUIREMENTS FOR SCENARIO 2 
+In the second scenario, load two more tables 
+bike trips and regions 
+Simulate how to handle data loading and thinking about data modelling 
+1. As an operational business user 
+- How many bike trips take place daily ?? 
+- what is the daily average trip duration ?? 
+- top five station names as the starting station that has the longest trips ? 
+- The top five region names that have the shortest total trip durations? 
 
+2. The bike trips data is in the GCS bucket, and each bucket folder contains daily data.
+
+3. The regions data is from the BigQuery public dataset.
+
+4. New data will be updated daily in the GCS bucket for stations and trips tables.
+
+HOW TO TACKLE THE ISSUE 
+1. WHAT WILL YOU DO ?? 
+2. WHAT SERVICES WILL YOU USE ?? 
+3. HOW WILL YOU DO THAT ?? 
+
+We will use the python API instead of using the GCP console 
+
+STEPS AND PLANNING FOR SCENARIO 2 
+1. Since customer is intreasted in daily measurements, we will create a layer to 
+provide daily aggregations to the user. 
+2. There will be new data daily so we need to plan how to handle the incoming data 
+from GCS directories. 
+3. If you imagine three tables, stations, regions and trips in real life. 
+they are different entities. 
+Stations and regions are static objects 
+Trips are events
+Get a clearer information after checking the data 
+we should think how to handle both types of information differently 
+
+4. The data mart is similar to scenario 1. 
+We can use the same datasets to store the result there. 
+
+OVERALL STEPS ARE 
+1. 20180101
+LOAD EVENT FROM GCS TO BIGQUERY 
+& 
+LOAD SNAPSHOT TABLE FROM PUBLIC DATASET TO BIGQUERY 
+
+2. 20180102 
+BATCH LOAD EVENT TABLE 
+& 
+BATCH LOAD SNAPSHOT TABLE 
+
+3. DATA MODELLING 
+
+4. CREATE A DATA MART 
+
+FIVE PRINCIPAL STEPS INVOLVED IN IT 
+1. Create the required datasets 
+2. Load the initial trips and region tables to BigQuery 
+- trips from GCS 
+- regions from the bigquery public datasets 
+3. Handle the daily batch data loading 
+- for the trips table 
+- for the stations table 
+4. design the data modelling for bigquery 
+5. store the business questions result in the table 
+
+
+STEP 1 
+- CREATE THE DATASETS USING PYTHON 
+Create a new dataset called dwh_bikesharing & 
+raw_bikesharing & dm_bikesharing to the list. 
 
 
 
