@@ -128,3 +128,57 @@ A synthetic feature is created algorithmically, usually with a combination of th
 using arithmetic operations such as addition, subtraction, multiplication, and division 
 to train machine learning models. Feature synthesis provides great insights into data patterns 
 and helps model training for some ML problems.
+
+DEVELOPING AND DEPLOYING ML MODELS 
+1. SPLITTING THE DATASET 
+Training the dataset: the subset of data using to train the model 
+Validation dataset: The subset of data used to validate the trained model. Model hyperparameters 
+will be tuned for optimization based on validation.
+Testing dataset: The subset of data used to evaluate a final model before its deployment to production.
+
+2. BUILDING THE PLATFORM 
+3. TRAINING THE MODEL 
+Ways to measure difference between predicted and actual values 
+A. mean absolute error(MAE) 
+B. Mean squared error 
+
+4. VALIDATING THE MODEL 
+ROC CURVE & AUC 
+An Receiver Operating Characteristic (ROC) curve is a graph showing the 
+True Positive Rate (TPR) and False Positive Rate (FPR), as two dimensions
+
+Area Under the Curve (AUC)-ROC as a measurement of classification model performance: 
+the greater the AUC-ROC, the better.
+
+More Metrics 
+1. Accuracy => measures the proportion of correct predictions among the total number of cases:
+2. Precision => measures the proportion of positive identifications that are actually correct:
+3. f1-score => combines precision and sensitivity and measures the overall performance
+
+5. TUNING THE MODEL 
+OVERFITTING AND UNDERFITTING 
+REGULARISATION 
+HYPERPARAMETER TUNING 
+most common hyperparameters that are often tuned are 
+1. the batch size: number of samples that are processed during the training 
+before the model is updated 
+2. the number of training epochs: number of times that we run through the full set of 
+training data during the model training 
+3. learning rate => distance travelled when trying to find the optimal value for a parameter 
+6. TESTING AND DEPLOYING THE MODEL 
+To test and get performance metrics from your model, you must make inferences or predictions from 
+the model—which typically requires deployment
+The goal of the deployment phase is to provide a managed environment to host models for 
+inference both securely and with low latency. You can deploy your model in one of two ways:
+1. single predictions => Deploy your model online with a permanent endpoint. For example, 
+we can deploy the housing model 
+(price prediction) with an online endpoint.
+
+2. Batch transformation => spin up your model and perform the predictions for the entire dataset that 
+is provided. 
+
+7. PRACTICING WITH SCIKIT-LEARN 
+
+
+UNDERSTANDING NUERAL NETWORKS AND DEEP LEARNING 
+

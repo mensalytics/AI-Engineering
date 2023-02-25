@@ -297,6 +297,8 @@ raw_bikesharing & dm_bikesharing to the list.
 use file 
 createdatasets.py or createdatasetsone.py 
 
-STEP 2 INITIAL LOADING OF THE TRIPS TABLE INTO BIGQUERY 
+STEP 2A: INITIAL LOADING OF THE TRIPS TABLE INTO BIGQUERY 
 The dataset is in GCS bucket inside directory dataset/trips 
 use file loadtripsdatabigquery.py or loadtripsdatabigqueryone.py 
+
+STEP 2B: INITIAL LOADING OF THE REGIONS TABLE INTO BIGQUERY 
