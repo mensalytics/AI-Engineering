@@ -2,8 +2,8 @@ import sys
 import logging
 from google.cloud import bigquery 
 
-PROJECT_ID = "dataengpart1"
-TARGET_TABLE_ID = "{}.dwh_bikesharing.fact_trips_daily".format(PROJECT_ID)
+project_id = "dataengpart1"
+target_table_id = "{}.dwh_bikesharing.fact_trips_daily".format(project_id)
 
 logging.basicConfig(level=logging.INFO)
 
@@ -35,7 +35,7 @@ def create_fact_table(project_id, target_table_id):
     """
 
     job_params = {"load_date": load_date}
-    query_job = client.query(sql, job_config=job_config, job_params=job_params)
+    query_job = client.query(sql, job_config=job_config)
 
     try: 
         query_job.result() 
@@ -44,4 +44,4 @@ def create_fact_table(project_id, target_table_id):
         logging.exception(exception) 
 
 if __name__ == "__main__": 
-    create_fact_table(PROJECT_ID, TARGET_TABLE_ID)
+    create_fact_table(project_id, target_table_id)
