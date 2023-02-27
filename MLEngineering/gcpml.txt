@@ -181,4 +181,77 @@ is provided.
 
 
 UNDERSTANDING NUERAL NETWORKS AND DEEP LEARNING 
+Deep learning has made a huge breakthrough and is applied in research and industrial arears 
+ie computer vision, nlp and so on. 
+1. Nueral networks & DL 
+2. The cost function 
+3. The optimizer alogorithm 
+4. The activation function 
 
+Types of Nueral Networks 
+1. CNN 
+2. RNN 
+3. LSTM => LONG SHORT TERM MEMORY MODELS 
+4. GENERATIVE ADVERSARIAL NETWORKS 
+
+
+MASTERING ML IN GCP 
+GCP BIGQUERY 
+FULLY MANAGED GCP SERVICE => YOU DO NOT CONCERN YOUSELF WITH BACKEND DATA PROCESSING. 
+INFRASTRUCTURE IE COMPUTE, NETWORK STORAGE ETC. 
+SERVERLESS => YOU DO NOT MANAGE ANY SERVERS IN BIGQUERY. 
+ALL THE DATA PROCESSING ENGINES ARE TAKEN CARE OF BY GOOGLE IE BIGQUERY BI ENGINE & ML ENGINE.  
+HIGLY SCALABLE => VERY ELASTIC AND CAN SCALE TO ANY SIZE, QUICKLY AND SEAMLESSLY. 
+COST EFFECTIVE => ONLY CHARGED FOR THE BIGQUERY RESOURCES YOU CONSUME. 
+
+Bigquery ingests data from data sources in three ways: 
+1. archive => create a dataset with tables generated from data sources such as computer, 
+gcs or other gcp databases ie bigtable or amazon simple storage services. 
+
+2. batch, with batch processing, you can load bigquery from cloud storage or local storage and 
+the source data can be in the format of avro, csv, orc, json, parquet or firestore exports stored in GCS. 
+
+3. real time streaming, 
+Real time events can be streamed into bigquery, 
+events to GCP Pub/Sub, process them using a dataflow job, and ingest the outputs to BigQuery.
+
+BIGQUERY STORES DATA WITH SCALABLE STORAGE WHICH IS ACID COMPLIANT AND COST EFFECTIVE. 
+WHAT IS ACID COMPLIANT ?? 
+SEPERATION OF STORAGE AND COMPUTE PROVIDES HIGH PERFORMANCE AND SERVICE DECOUPLING. 
+
+BigQuery processes data with an in-memory business intelligence engine – BigQuery BI Engine. 
+Because BigQuery supports standard SQL, which is compliant with the ANSI SQL 2011 standard, 
+it opens an avenue for the traditional relational databases and professionals to transform to 
+BQ and BQML platforms.
+
+With BigQuery, you can visualize your data with its integrated Google Data Studio tool. 
+Leveraging the BigQuery connector in Data Studio, you can create a data source, a report, 
+and charts that visualize data in BigQuery data warehouses.
+
+
+GCP BQML => THIS ENABLES DATA SCIENTISTS TO TRAIN ML MODELS DIRECTLY IN BIGQUERY USING 
+STANDARD SQL QUERIES. 
+IT SUPPORTS THESE SIMPLE MODELS 
+1. LINEAR REGRESSION 
+2. BINARY LOGISTIC REGRESSION 
+3. MULTI CLASS LOGISTIC REGRESSION 
+4. K MEANS CLUSTERING => SEPERATE TO DIFFERENT CLUSTERS. 
+CAN EXPERIMENT ARREARS ON THIS ONE 
+
+METRICS 
+1. PRECISION 
+2. RECALL 
+3. ACCURACY 
+4. F1_SCORE 
+5. LOG_LOSS 
+6. ROC_AUC 
+
+INTRODUCTION TO TENSORFLOW 
+
+INTRODUCTION TO KERAS 
+Keras is a Google platform and a high-level interface to build ML/DL models with TensorFlow. 
+Keras provides a high-level API that encapsulates data transformations and operations using 
+logic units, called layers, as the building blocks to create neural networks. 
+
+
+EXPLORING GOOGLE CLOUD VERTEX AI 

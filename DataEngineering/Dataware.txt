@@ -302,3 +302,14 @@ The dataset is in GCS bucket inside directory dataset/trips
 use file loadtripsdatabigquery.py or loadtripsdatabigqueryone.py 
 
 STEP 2B: INITIAL LOADING OF THE REGIONS TABLE INTO BIGQUERY 
+Dataset from public dataset loaded into 
+code is loadregionsdatabigquery.py 
+code is loadregionsdatabigqueryone.py 
+
+STEP 3A: HANDLE THE DAILY BATCH DATA LOADING FOR THE TRIPS TABLE 
+Load from the same bucket but in a different directory 20180102 
+The file is loadtripsdatabigquerytwo.py 
+Bigquery has three write_disposition variables which are 
+1. WRITE_APPEND => if the table exists bigquery appends the data to the table 
+2. WRITE_EMPTY => only write to the table when it exists and contains no data 
+3. WRITE_TRUNCATE => if the table exists, bigquery overwrites the table data 
