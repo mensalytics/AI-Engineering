@@ -1,6 +1,9 @@
 import sys 
 from google.cloud import bigquery 
 
+# this script requires that you add parameters date 
+# in the format yyyy-mm-dd 
+
 PROJECT_ID = "dataengpart1"
 TARGET_TABLE_ID = "{}.dwh_bikesharing.fact_trips_daily".format(PROJECT_ID)
 
@@ -32,7 +35,7 @@ def create_fact_table(PROJECT_ID, TARGET_TABLE_ID):
             COUNT(trip_id) AS total_trips,
             SUM(duration_sec) AS sum_duration_sec,
             AVG(duration_sec) AS avg_duration_sec
-        FROM `{project_id}.raw_bikesharing.trips` AS trips
+        FROM `{PROJECT_ID}.raw_bikesharing.trips` AS trips
         JOIN `{load_date}.raw_bikesharing.stations` AS stations
             ON trips.start_station_id = stations.station_id
         WHERE DATE(start_date) = @load_date
