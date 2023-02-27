@@ -325,6 +325,7 @@ FROM `dataengpart1.raw_bikesharing.trips`
 GROUP BY trip_id
 HAVING cnt_trip_id > 1;
 
+STEP 3B 
 HANDLE DAILY BATCH DATA LOADING FOR THE STATIONS TABLE 
 SIMULATE LOADING DATA FOR STATIONS TABLE 
 LOAD DATA FROM 2018-01-02 
@@ -344,3 +345,27 @@ STATION 3 (INSERT).
 
 script to be used is 
 loadstationsdatabigquery.py
+or loadstationsdatabigqueryone.py 
+check bigquery editor 
+with sql for any duplicates 
+SELECT
+station_id, count(*) as cnt_station
+FROM `[your project id].raw_bikesharing.stations`
+GROUP BY station_id
+HAVING cnt_station > 1;
+if there is no result to display then means there is no duplicates 
+
+
+HANDLE LOADS USING SNAPSHOTS 
+=> USE PEN AND PAPER TO UNDERSTAND THIS PART BETTER 
+
+
+STEP 4: DESIGN DATA MODELLING FOR BIGQUERY 
+USE BOOK 
+Thinking whether there are any better wats to reshape our table schema to 
+represent business needs 
+
+
+CREATING FACT AND DIMENSIONS TABLE 
+the file is createfacttabledailytrips.py 
+
