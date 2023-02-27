@@ -313,3 +313,34 @@ Bigquery has three write_disposition variables which are
 1. WRITE_APPEND => if the table exists bigquery appends the data to the table 
 2. WRITE_EMPTY => only write to the table when it exists and contains no data 
 3. WRITE_TRUNCATE => if the table exists, bigquery overwrites the table data 
+
+write a sql query to check 
+SELECT distinct(date(start_date))
+FROM `dataengpart1.raw_bikesharing.trips`;
+
+now check if no records have been duplicated ah 
+the query will return no results which means there are no duplications 
+SELECT count(*) cnt_trip_id, trip_id
+FROM `dataengpart1.raw_bikesharing.trips`
+GROUP BY trip_id
+HAVING cnt_trip_id > 1;
+
+HANDLE DAILY BATCH DATA LOADING FOR THE STATIONS TABLE 
+SIMULATE LOADING DATA FOR STATIONS TABLE 
+LOAD DATA FROM 2018-01-02 
+This approach is different from the trips table. 
+This kind of table may have new records(INSERT), updated records(UPDATE) 
+and removed records DELETE records. 
+Imagine a real-world bike station; a new bike station can be demolished, capacities or 
+the station name may change, or a new station may be established in the region. 
+So, this kind of data is called a snapshot. Snapshot data is not event data. 
+Snapshot data is an object or entity in the real world; it doesn't happen, it's just there.
+
+for example - NB: UNDERSTAND THIS PART BY DRAWING DIAGRAMS 
+DAY 1 has two records station_1 and station_2. 
+DAY 2 for business reasons station 1 gets additional capacity(UPDATE)
+station 2 no longer exists(DELETE) and there is a new station 
+STATION 3 (INSERT). 
+
+script to be used is 
+loadstationsdatabigquery.py
