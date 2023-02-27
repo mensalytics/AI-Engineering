@@ -35,7 +35,7 @@ def create_fact_table(project_id, target_table_id):
     """
 
     job_params = {"load_date": load_date}
-    query_job = client.query(sql, job_config=job_config)
+    query_job = client.query(sql, job_config=job_config, job_params=job_params)
 
     try: 
         query_job.result() 
